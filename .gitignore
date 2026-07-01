@@ -1,0 +1,10 @@
+# 忽略所有 txt
+info.txt
+info4.txt
+ACCESS_TOKEN.txt
+.idea/
+build/
+dist/
+*.log
+__pycache__/
+*.py[cod]
