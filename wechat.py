@@ -49,11 +49,11 @@ def send2wechat(AgentId, Secret, CompanyId, message):
 
 if __name__ == '__main__':
     # 应用ID
-    AgentId_ = '1000002'
+    AgentId_ = os.environ.get('WECHAT_AGENT_ID', '1000002')
     # 应用Secret
-    Secret_ = '***REMOVED_WECHAT_SECRET***'
+    Secret_ = os.environ['WECHAT_SECRET']
     # 企业ID
-    CompanyId_ = '***REMOVED_WECHAT_COMPANY_ID***'
+    CompanyId_ = os.environ['WECHAT_COMPANY_ID']
     # 发送的消息
     message_ = '你好，wechat！'
     send2wechat(AgentId_, Secret_, CompanyId_, message_)

@@ -7,14 +7,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 ntchat.set_wechat_exe_path (wechat_version='3.6.0.18')
-# 应用ID
-AgentId_ = '1000002'
-# 应用Secret
-Secret_ = '***REMOVED_WECHAT_SECRET***'
-# 企业ID
-CompanyId_ = '***REMOVED_WECHAT_COMPANY_ID***'
-# 发送的消息
-message_ = '你好，wechat！'
+OA_LOGIN_URL = os.environ.get("OA_LOGIN_URL", "http://oa.tywatersupply.com:9500/login.jsp")
+OA_USERNAME = os.environ["OA_USERNAME"]
+OA_PASSWORD = os.environ["OA_PASSWORD"]
 
 options = webdriver.ChromeOptions ()
 # 不显示ChromeDriver的控制台窗口
@@ -24,15 +19,15 @@ options.add_experimental_option ("excludeSwitches" , ["enable-logging"])
 driver = webdriver.Chrome (options=options)
 driver.minimize_window ()
 
-driver.get ("http://oa.tywatersupply.com:9500/login.jsp")
+driver.get (OA_LOGIN_URL)
 username = driver.find_element (
     by=By.CLASS_NAME , value="lui_login_input_username")
 password = driver.find_element (
     by=By.CLASS_NAME , value="lui_login_input_password")
 login_button = driver.find_element (
     by=By.CLASS_NAME , value="lui_login_button_div_c")
-username.send_keys ("***REMOVED_OA_USERNAME***")
-password.send_keys ("***REMOVED_PASSWORD***")
+username.send_keys (OA_USERNAME)
+password.send_keys (OA_PASSWORD)
 
 login_button.click ()
 

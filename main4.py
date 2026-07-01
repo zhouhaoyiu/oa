@@ -8,6 +8,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 options = webdriver.ChromeOptions ()
+OA_LOGIN_URL = os.environ.get("OA_LOGIN_URL", "http://oa.tywatersupply.com:9500/login.jsp")
+OA_USERNAME = os.environ["OA_USERNAME"]
+OA_PASSWORD = os.environ["OA_PASSWORD"]
 
 bmArr = ["企业发展策划部" , "调度运行部" , "生产技术部" , "基建部" , "安全保卫部" , "营销管理部"]
 # options.add_argument ('headless')
@@ -15,15 +18,15 @@ bmArr = ["企业发展策划部" , "调度运行部" , "生产技术部" , "基�
 driver = webdriver.Chrome (options=options)
 # driver.minimize_window ()
 
-driver.get ("http://oa.tywatersupply.com:9500/login.jsp")
+driver.get (OA_LOGIN_URL)
 username = driver.find_element (
     by=By.CLASS_NAME , value="lui_login_input_username")
 password = driver.find_element (
     by=By.CLASS_NAME , value="lui_login_input_password")
 login_button = driver.find_element (
     by=By.CLASS_NAME , value="lui_login_button_div_c")
-username.send_keys ("***REMOVED_OA_USERNAME***")
-password.send_keys ("***REMOVED_PASSWORD***")
+username.send_keys (OA_USERNAME)
+password.send_keys (OA_PASSWORD)
 
 login_button.click ()
 
@@ -116,4 +119,3 @@ else:
 driver.close ()
 # 关闭浏览器
 driver.quit ()
-
