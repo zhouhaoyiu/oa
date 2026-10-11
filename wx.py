@@ -1,21 +1,4 @@
-# -*- coding: utf-8 -*-
-import sys
-import ntchat
+"""WeChat delivery is intentionally disabled; use main2.py for local reminders."""
 
-wechat = ntchat.WeChat()
-
-# 打开pc微信, smart: 是否管理已经登录的微信
-wechat.open(smart=True)
-
-# 等待登录
-wechat.wait_login()
-
-# 向文件助手发送一条消息
-wechat.send_text(to_wxid="filehelper", content="hello, filehelper")
-
-try:
-    while True:
-        pass
-except KeyboardInterrupt:
-    ntchat.exit_()
-    sys.exit()
+if __name__ == "__main__":
+    print("WeChat delivery is disabled. Run main2.py for the local inbox.")
